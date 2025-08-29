@@ -20,3 +20,14 @@ body {
 .cookieImg:hover {
   cursor: pointer;
 }
+#shop-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+.upgrade {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}

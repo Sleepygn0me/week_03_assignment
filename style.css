@@ -8,4 +8,11 @@
 
 body {
   background-color: antiquewhite;
+  position: fixed;
+  color: black;
+  font-size: 30px;
+  background-color: antiquewhite;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
 }

@@ -22,7 +22,7 @@ const stats = {
 //====================================================
 //the interval
 setInterval(function () {
-  cookieCount += cps; //cookieCount = cookieCount + cps
+  cookieCount += cps;
   //update the text content in the DOM with the new values
   //save the new values in local storage
 }, 1000);

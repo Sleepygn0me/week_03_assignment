@@ -5,8 +5,13 @@ const stats = {
   cps: 0,
 };
 
-//if there is data in local storage, update stats with this data, so the user picks it up where they left off
-
+const savedStats = localStorage.getItem("stats");
+if (savedStats) {
+  const parsed = JSON.parse(savedStats);
+  stats.cookieCount = parsed.cookieCount || 0;
+  stats.cps = parsed.cps || 0;
+  console.log("Loaded stats:", stats);
+}
 //=======================================================
 //shop upgrades
 //fetch the upgrades from the API
@@ -18,6 +23,11 @@ const stats = {
 // assign the value to its text content
 // append it to the DOM
 // after you complete this task, you should see the upgrades on your website
+// ========= DOM Elements =========
+const cookieImg = document.querySelector(".cookieImg");
+const cookieCountEl = document.getElementById("cookieCount");
+const cpsEl = document.getElementById("cps");
+const shopContainer = document.getElementById("shop-container");
 
 //====================================================
 //the interval
@@ -30,10 +40,22 @@ setInterval(function () {
 //==========================================================
 //game logic
 
-//when the user clicks on the cookie, the cookieCount value goes up by 1
+function updateDisplay() {
+  cookieCountEl.textContent = `Cookie count: ${stats.cookieCount}`;
+  cpsEl.textContent = `CPS: ${stats.cps}`;
+}
 
-//when the user clicks on the buy button in an upgrade in teh shop, the cookieCount value goes down, and the cps value goes up
+// ====== Cookie click logic ======
+cookieImg.addEventListener("click", () => {
+  stats.cookieCount++; // increase the count
+  updateDisplay(); // refresh the DOM
+  localStorage.setItem("stats", JSON.stringify(stats)); // save progress
+});
+
+// ====== Initial render ======
+updateDisplay();
+//when the user clicks on the buy button in an upgrade in the shop, the cookieCount value goes down, and the cps value goes up
 
 //you will need functions to contain the game logic.
-//to create the logic of the shop, you could have a function per upgrade OR you could have a reusable function that works for ALL upgrades
+//to create the logic of the shop, you could have a function per upgrade
 //since we are using local storage, make sure that the local storage values are updated after the user buys an upgrade OR when the user clicks on the cookie

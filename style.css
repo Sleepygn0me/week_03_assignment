@@ -16,3 +16,7 @@ body {
   text-align: center;
   z-index: 1;
 }
+
+.cookieImg:hover {
+  cursor: pointer;
+}

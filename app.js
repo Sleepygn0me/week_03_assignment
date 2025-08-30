@@ -63,7 +63,7 @@ async function getCookies() {
 
     button.addEventListener("click", () => {
       const costValue = parseFloat(upgrade.cost) || 0;
-      const cpsValue = parseFloat(stats.cps) || 0.1;
+      const cpsValue = parseFloat(stats.cps) || 1;
 
       if (stats.cookieCount >= costValue) {
         stats.cookieCount -= costValue;
